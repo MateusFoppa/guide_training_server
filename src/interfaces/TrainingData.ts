@@ -1,4 +1,5 @@
 export interface TrainingData {
+  id: Number,
   name: String,
   image: String,
   charge: Number,
