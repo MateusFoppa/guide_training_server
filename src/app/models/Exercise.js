@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-//Os exercicios seram acionados estáticamente
+
 const ExerciseSchema = new mongoose.Schema({
   id: Number,
   name: String,
