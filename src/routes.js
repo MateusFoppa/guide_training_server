@@ -11,6 +11,7 @@ routes.get("/training/", training.index);
 routes.get("/training/:_id", training.show);
 routes.post("/training", training.create);
 routes.put("/training/:_id", training.update);
+routes.patch("/training/:_id", training.update);
 routes.delete("/training/:_id", training.destroy);
 
 // Exercise

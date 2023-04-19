@@ -1,8 +1,30 @@
 export interface TrainingData {
-  id: Number,
-  name: String,
-  image: String,
-  charge: Number,
-  movements: Number,
-  description: String,
+  id: {
+    type: Number,
+    require: true
+  }
+  name: {
+    type: String,
+    require: true
+  }
+  image: {
+    type: String,
+    require: false
+  }
+  charge: {
+    type: Number,
+    require: false
+  }
+  series: {
+    type: Number,
+    require: false
+  }
+  movements: {
+    type: Number,
+    require: false
+  }
+  description: {
+    type: String,
+    require: false
+  }
 }

@@ -41,14 +41,14 @@ class TrainingController {
 
   async update(req, res) {
     try {
-      const { charge, movements } = req.params;
-      const training = await Training.findOne({ charge, movements });
+      const { charge, movements, series } = req.params;
+      const training = await Training.findOne({ charge, movements, series });
 
       if (!training) {
         return res.status(404).json();
       }
 
-      await training.updateOne(req.body);
+      await Training.updateOne(req.body);
 
       return res.status(200).json();
     } catch (err) {

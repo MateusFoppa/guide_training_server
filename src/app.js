@@ -1,18 +1,27 @@
 import express from "express";
 import routes from "./routes";
 
+
+
+// Restante do código do servidor
+
+
 import "./database";
 
 class App {
+
   constructor() {
     this.server = express();
     this.middlewares();
     this.routes();
+
   }
+
 
   middlewares() {
     this.server.use(express.json());
     this.server.use((req, res, next) => {
+      req.header("Access-Control-Allow-Origin", "*")
       res.header("Access-Control-Allow-Origin", "*");
 
       res.header(
