@@ -31,7 +31,6 @@ class ExerciseController {
   async create(req, res) {
     try {
       const exercise = await Exercise.create(req.body);
-      console.log(exercise.name)
 
       return res.status(201).json(exercise);
     } catch (err) {
@@ -64,9 +63,7 @@ class ExerciseController {
       const exercise = await Exercise.findOne({ _id });
 
       if (!exercise) {
-        console.log(req.params._id)
         return res.status(404).json();
-
       }
 
       await exercise.deleteOne();

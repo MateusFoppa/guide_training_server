@@ -41,14 +41,16 @@ class TrainingController {
 
   async update(req, res) {
     try {
-      const { charge, movements, series } = req.params;
+      const { charge, movements, series } = req.body;
+      // const { _id } = req.params;
+      // console.log(_id);
       const training = await Training.findOne({ charge, movements, series });
 
       if (!training) {
         return res.status(404).json();
       }
 
-      await Training.updateOne(req.body);
+      await training.updateOne(req.body);
 
       return res.status(200).json();
     } catch (err) {
@@ -74,6 +76,35 @@ class TrainingController {
       return res.status(500).json({ error: "Internal Server Error" });
     }
   }
-}
 
+  // Criando Exercise dentro de Training
+  async createExercise(req, res) {
+    try {
+      const training_id = req.params;
+      const { _id, name, image, charge, movements, description } = req.body;
+
+      const training = await Training.findById(training_id);
+
+      if (!training) {
+        return res.status(404).json({ error: "Treinamento não encontrado" });
+      }
+
+      const exercise = {
+        _id,
+        name,
+        image,
+        charge,
+        movements,
+        description,
+      };
+      console.log(training);
+      training.exercise.push(exercise);
+      await training.save();
+
+      return res.status(201).json(training);
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+  }
+}
 export default new TrainingController();

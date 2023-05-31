@@ -1,13 +1,9 @@
 import mongoose from "mongoose";
-import TrainingData from "../../interfaces/TrainingData";
+import ExerciseData from "../../interfaces/ExerciseData.ts";
 
 const TrainingSchema = new mongoose.Schema({
-  exercise: TrainingData,
+  exercise: ExerciseData,
   name: String,
-  id: {
-    type: Number,
-    require: false
-  }
 });
 
 export default mongoose.model("training", TrainingSchema);
